@@ -34,7 +34,8 @@ development:
 
   adapter: postgresql
   encoding: unicode
-  database: moonshot_development
+  #database: moonshot_development
+  database: firstapp_development
   pool: 5
   username: postgres
   password: 777777
@@ -52,7 +53,8 @@ test:
 
   adapter: postgresql
   encoding: unicode
-  database: moonshot_development
+  #database: moonshot_development
+  database: firstapp_development
   pool: 5
   username: postgres
   password: 777777
@@ -67,7 +69,8 @@ production:
 
   adapter: postgresql
   encoding: unicode
-  database: moonshot_development
+  #database: moonshot_development
+  database: firstapp_development
   pool: 5
   username: postgres
   password: 777777
