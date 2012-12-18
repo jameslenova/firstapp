@@ -4,15 +4,12 @@
 
 $grayMediumLight: #eaeaea;
 
-<<<<<<< HEAD
-=======
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
   -webkit-box-sizing: border-box; 
   box-sizing: border-box;
 }
 
->>>>>>> sign-up
 /* universal */
 
 html {
@@ -84,8 +81,6 @@ p {
   }
 }
 
-<<<<<<< HEAD
-=======
 
 /* miscellaneous */
 
@@ -154,7 +149,6 @@ input {
   @extend .error;
  }
 
->>>>>>> sign-up
 /* footer */
 
 footer {
@@ -174,6 +168,12 @@ footer {
   ul {
     float: right;
     list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}le: none;
     li {
       float: left;
       margin-left: 10px;
