@@ -11,9 +11,13 @@ Firstapp::Application.routes.draw do
   
 
   resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
 
-  resources :users
+  resources :users  do
+    member do
+      get :following, :followers
+    end
 
 
   # The priority is based upon order of creation:
