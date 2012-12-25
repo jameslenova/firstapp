@@ -1,0 +1,27 @@
+<% provide(:title, @location.title) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        
+        <%= @location.title %>
+      </h1>
+    </section>
+    <section>
+      
+    </section>
+  </aside>
+
+
+
+  <div class="span8">
+
+    <%= render 'follow_form' if signed_in? %>
+
+
+    
+  </div>
+
+
+  
+</div>

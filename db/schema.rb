@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222063639) do
+ActiveRecord::Schema.define(:version => 20121223193807) do
+
+  create_table "chooselocations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "chooselocations", ["location_id"], :name => "index_chooselocations_on_location_id"
+  add_index "chooselocations", ["user_id", "location_id"], :name => "index_chooselocations_on_user_id_and_location_id", :unique => true
+  add_index "chooselocations", ["user_id"], :name => "index_chooselocations_on_user_id"
+
+  create_table "choosesubjects", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "choosesubjects", ["subject_id"], :name => "index_choosesubjects_on_subject_id"
+  add_index "choosesubjects", ["user_id", "subject_id"], :name => "index_choosesubjects_on_user_id_and_subject_id", :unique => true
+  add_index "choosesubjects", ["user_id"], :name => "index_choosesubjects_on_user_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -32,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20121222063639) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "subjects", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

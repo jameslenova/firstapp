@@ -1,0 +1,5 @@
+<%= form_for(current_user.choosesubjects.build(subject_id: @subject.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :subject_id %></div>
+  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+<% end %>

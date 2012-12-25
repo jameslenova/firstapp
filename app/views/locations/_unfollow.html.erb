@@ -1,0 +1,4 @@
+<%= form_for(current_user.chooselocations.find_by_location_id(@location),
+             html: { method: :delete }, remote: true) do |f| %>
+  <%= f.submit "Unfollow", class: "btn btn-large" %>
+<% end %>

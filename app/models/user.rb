@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :chooselocations, dependent: :destroy
+  has_many :locations, through: :chooserelationships, source: :location
+
+  has_many :choosesubjects, dependent: :destroy
+  has_many :subjects, through: :choosesubjects, source: :subject
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
                                    class_name:  "Relationship",
@@ -34,6 +39,31 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+  def study?(subject)
+    choosesubjects.find_by_subject_id(subject.id)
+  end
+
+  def study!(subject)
+    choosesubjects.create!(subject_id: subject.id)
+  end
+
+  def unstudy!(subject)
+    choosesubjects.find_by_subject_id(subject.id).destroy
+  end
+
+  def bypass?(location)
+    chooselocations.find_by_location_id(location.id)
+  end
+
+  def bypass!(location)
+    chooselocations.create!(location_id: location.id)
+  end
+
+  def unbypass!(location)
+    chooselocations.find_by_location_id(location.id).destroy
+  end
+
 
   private
 

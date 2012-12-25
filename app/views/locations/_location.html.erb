@@ -1,0 +1,8 @@
+<li>
+  
+  <%= link_to location.title, location %>
+  <% if current_user.admin? %>
+    | <%= link_to "delete", location, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

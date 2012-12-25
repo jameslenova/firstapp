@@ -4,6 +4,9 @@ Firstapp::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   match '/signup',  to: 'users#new'
+  match '/newlocation',  to: 'locations#new'
+  match '/newsubject',  to: 'subjects#new'
+
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new'
@@ -12,6 +15,11 @@ Firstapp::Application.routes.draw do
 
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :chooselocations, only: [:create, :destroy]
+  resources :choosesubjects, only: [:create, :destroy]
+
+  resources :locations
+  resources :subjects
 
 
   resources :users  do

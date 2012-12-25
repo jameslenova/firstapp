@@ -1,0 +1,5 @@
+<%= form_for(current_user.chooselocations.build(location_id: @location.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :location_id %></div>
+  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+<% end %>
