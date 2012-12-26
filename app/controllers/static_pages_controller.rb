@@ -7,6 +7,16 @@ class StaticPagesController < ApplicationController
     end
   end
 
+
+
+  def groups
+
+    if signed_in?
+      @subjects  = current_user.subjects
+      @locations = current_user.locations
+    end
+  end
+
   def help
   end
 

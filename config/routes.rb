@@ -6,6 +6,8 @@ Firstapp::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/newlocation',  to: 'locations#new'
   match '/newsubject',  to: 'subjects#new'
+  match '/newsubject',  to: 'subjects#new'
+  match '/groups',  to: 'static_pages#groups'
 
 
   resources :sessions, only: [:new, :create, :destroy]

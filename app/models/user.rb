@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :chooselocations, dependent: :destroy
-  has_many :locations, through: :chooserelationships, source: :location
+  has_many :locations, through: :chooselocations, source: :location
 
   has_many :choosesubjects, dependent: :destroy
   has_many :subjects, through: :choosesubjects, source: :subject

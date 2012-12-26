@@ -1,0 +1,24 @@
+<% provide(:title, 'My Groups') %>
+<h1> MY SUBJECTS </h1>
+
+
+
+<ul class="users">
+<% @subjects.each do |sub| 
+
+ @locations.each do |loc| 
+
+@myusers= loc.users & sub.users
+%>
+<li>
+<%= sub.title %> -- <%= loc.title %> <%= @myusers.length %>
+</li>
+
+<% end %>
+<% end %>
+
+
+
+
+</ul>
+
