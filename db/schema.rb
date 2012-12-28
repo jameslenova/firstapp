@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223193807) do
+ActiveRecord::Schema.define(:version => 20121228160657) do
 
   create_table "chooselocations", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20121223193807) do
   add_index "chooselocations", ["location_id"], :name => "index_chooselocations_on_location_id"
   add_index "chooselocations", ["user_id", "location_id"], :name => "index_chooselocations_on_user_id_and_location_id", :unique => true
   add_index "chooselocations", ["user_id"], :name => "index_chooselocations_on_user_id"
+
+  create_table "choosestudygroups", :force => true do |t|
+    t.integer  "studygroup_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "choosestudygroups", ["studygroup_id"], :name => "index_choosestudygroups_on_studygroup_id"
+  add_index "choosestudygroups", ["user_id", "studygroup_id"], :name => "index_choosestudygroups_on_user_id_and_studygroup_id", :unique => true
+  add_index "choosestudygroups", ["user_id"], :name => "index_choosestudygroups_on_user_id"
 
   create_table "choosesubjects", :force => true do |t|
     t.integer  "user_id"
@@ -60,6 +71,19 @@ ActiveRecord::Schema.define(:version => 20121223193807) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "studygroups", :force => true do |t|
+    t.integer  "subject_id"
+    t.integer  "location_id"
+    t.datetime "classtime"
+    t.string   "day"
+    t.boolean  "activated",   :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "studygroups", ["location_id", "created_at"], :name => "index_studygroups_on_location_id_and_created_at"
+  add_index "studygroups", ["subject_id", "created_at"], :name => "index_studygroups_on_subject_id_and_created_at"
 
   create_table "subjects", :force => true do |t|
     t.string   "title"

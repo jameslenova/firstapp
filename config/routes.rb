@@ -6,9 +6,11 @@ Firstapp::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/newlocation',  to: 'locations#new'
   match '/newsubject',  to: 'subjects#new'
-  match '/newsubject',  to: 'subjects#new'
+  
   match '/groups',  to: 'static_pages#groups'
+  match '/onegroup/:subject/:location', to: 'static_pages#onegroup'
 
+  
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new'
@@ -22,6 +24,7 @@ Firstapp::Application.routes.draw do
 
   resources :locations
   resources :subjects
+  resources :studygroups
 
 
   resources :users  do

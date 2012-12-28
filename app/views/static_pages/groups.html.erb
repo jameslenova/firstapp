@@ -11,7 +11,8 @@
 @myusers= loc.users & sub.users
 %>
 <li>
-<%= sub.title %> -- <%= loc.title %> <%= @myusers.length %>
+<%= sub.title %> -- <%= loc.title %> <%= @myusers.length %> 
+<li><%= link_to "see details", "/onegroup/#{sub.id}/#{loc.id}" %></li>
 </li>
 
 <% end %>

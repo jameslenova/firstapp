@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject_id: 1
+  location_id: 1
+  classtime: 2012-12-27 17:14:35
+  activated: false
+
+two:
+  subject_id: 1
+  location_id: 1
+  classtime: 2012-12-27 17:14:35
+  activated: false

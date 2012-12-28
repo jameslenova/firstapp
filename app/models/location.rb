@@ -5,5 +5,7 @@ class Location < ActiveRecord::Base
 
   has_many :chooselocations, dependent: :destroy
   has_many :users, through: :chooselocations, source: :user
+  has_many :studygroups
+  
   
 end

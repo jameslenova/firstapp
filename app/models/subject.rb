@@ -4,5 +4,6 @@ class Subject < ActiveRecord::Base
 
   has_many :choosesubjects, dependent: :destroy
   has_many :users, through: :choosesubjects, source: :user
+  has_many :studygroups
  end
 

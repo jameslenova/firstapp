@@ -1,0 +1,32 @@
+<% provide(:title, 'One Group') %>
+<h1> one subject one location  </h1>
+
+
+Subject   --  title 
+<p>
+
+<%= @subject.title %> -- <%= @location.title %>
+
+
+<%= form_for(@subject.studygroups.build(location_id: @location.id),
+             ) do |f| %>
+  <div><%= f.hidden_field :location_id %></div>
+  <div><%= f.hidden_field :subject_id %></div>
+
+
+  <%= f.time_select  :classtime ,:include_hours => true %>
+
+
+  
+  <%= f.select :day, [['Monday','Monday'],['Tue','Tuesday'],['Wed','Wedesday']] %>
+
+
+
+  <%= f.submit "suggest time", class: "btn btn-large btn-primary" %>
+
+
+<% end %>
+
+
+
+

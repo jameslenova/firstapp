@@ -17,6 +17,15 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def onegroup
+
+    if signed_in?
+      @subject  = Subject.find_by_id(params[:subject])
+      @location = Location.find_by_id(params[:location])
+
+    end
+  end
+
   def help
   end
 
