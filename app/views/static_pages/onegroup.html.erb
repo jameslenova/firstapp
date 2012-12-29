@@ -13,9 +13,9 @@ Subject   --  title
   <div><%= f.hidden_field :location_id %></div>
   <div><%= f.hidden_field :subject_id %></div>
 
-
-  <%= f.time_select  :classtime ,:include_hours => true %>
-
+<div class="styled-select">
+  <%= f.time_select  :classtime ,:include_hours => true,:minute_step => 30,:ampm => true %>
+</div>
 
   
   <%= f.select :day, [['Monday','Monday'],['Tue','Tuesday'],['Wed','Wedesday']] %>
