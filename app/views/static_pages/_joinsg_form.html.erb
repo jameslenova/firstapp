@@ -1,0 +1,8 @@
+
+  <span id=<%="sg#{sg.id}"%>>
+  <% if current_user.join?(sg) %>
+    <%= render 'unjoinsg',sg: sg %>
+  <% else %>
+    <%= render 'joinsg',sg: sg %>
+  <% end %>
+  </span>

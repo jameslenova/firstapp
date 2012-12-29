@@ -6,6 +6,36 @@ Subject   --  title
 <p>
 
 <%= @subject.title %> -- <%= @location.title %>
+<% 
+@studygroups= @subject.studygroups &  @location.studygroups
+%>
+
+size of study groups = <%= @studygroups.length %> 
+<p>
+
+<% @studygroups.each do |sg| %>
+
+<li>
+  
+ 
+    <%= sg.classtime.strftime("%H:%M") %> 
+    <%= sg.day %> 
+
+     studygroup size
+    <span id=<%="ssg#{sg.id}"%>>
+     <%= sg.choosestudygroups.count %>
+    </span>
+
+
+
+    <%= render 'joinsg_form',sg: sg if signed_in? %>
+
+    
+
+  
+  
+</li>
+<%end%>
 
 
 <%= form_for(@subject.studygroups.build(location_id: @location.id),

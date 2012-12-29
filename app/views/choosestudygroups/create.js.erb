@@ -1,0 +1,2 @@
+$("#sg<%=@sg.id%>").html("<%= escape_javascript(render('static_pages/unjoinsg',sg: @sg)) %>")
+$("#ssg<%=@sg.id%>").html('<%= @sg.choosestudygroups.count %>')

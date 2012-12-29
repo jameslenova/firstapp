@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :locations, through: :chooselocations, source: :location
 
   has_many :choosesubjects, dependent: :destroy
+  has_many :choosestudygroups , dependent: :destroy
   has_many :subjects, through: :choosesubjects, source: :subject
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -62,6 +63,18 @@ class User < ActiveRecord::Base
 
   def unbypass!(location)
     chooselocations.find_by_location_id(location.id).destroy
+  end
+
+  def join?(sg)
+    choosestudygroups.find_by_studygroup_id(sg.id)
+  end
+
+  def join!(sg)
+    choosestudygroups.create!(studygroup_id: sg.id)
+  end
+
+  def unjoin!(sg)
+    choosestudygroups.find_by_studygroup_id(sg.id).destroy
   end
 
 

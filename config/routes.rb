@@ -21,6 +21,7 @@ Firstapp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :chooselocations, only: [:create, :destroy]
   resources :choosesubjects, only: [:create, :destroy]
+  resources :choosestudygroups, only: [:create, :destroy]
 
   resources :locations
   resources :subjects

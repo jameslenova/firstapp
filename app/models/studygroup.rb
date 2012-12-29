@@ -3,6 +3,12 @@ class Studygroup < ActiveRecord::Base
 
   belongs_to :location
   belongs_to :subject
+
+  has_many :choosestudygroups , dependent: :destroy
+
+
+
+
   
 
 end

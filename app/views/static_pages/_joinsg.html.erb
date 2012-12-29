@@ -1,0 +1,5 @@
+<%= form_for(current_user.choosestudygroups.build(studygroup_id: sg.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :studygroup_id %></div>
+  <%= f.submit "Join", class: "btn btn-large btn-primary" %>
+<% end %>
