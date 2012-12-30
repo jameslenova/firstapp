@@ -71,6 +71,10 @@ class User < ActiveRecord::Base
 
   def join!(sg)
     choosestudygroups.create!(studygroup_id: sg.id)
+    if ( sg.choosestudygroups.count ) >= sg.min 
+      sg.activated=true
+      sg.save
+    end
   end
 
   def unjoin!(sg)

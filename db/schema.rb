@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228160657) do
+ActiveRecord::Schema.define(:version => 20121230073245) do
 
   create_table "chooselocations", :force => true do |t|
     t.integer  "user_id"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20121228160657) do
     t.boolean  "activated",   :default => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.integer  "min",         :default => 5
+    t.integer  "max",         :default => 10
   end
 
   add_index "studygroups", ["location_id", "created_at"], :name => "index_studygroups_on_location_id_and_created_at"

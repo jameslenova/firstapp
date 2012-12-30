@@ -4,6 +4,7 @@ class ChoosestudygroupsController < ApplicationController
   def create
     @sg = Studygroup.find(params[:choosestudygroup][:studygroup_id])
     current_user.join!(@sg)
+    
     respond_to do |format|
       format.html { redirect_to @sg }
       format.js

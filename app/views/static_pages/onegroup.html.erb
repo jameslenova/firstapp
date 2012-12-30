@@ -13,8 +13,9 @@ Subject   --  title
 size of study groups = <%= @studygroups.length %> 
 <p>
 
+ROWS OF UNACTIVATED STUDY GROUPS
 <% @studygroups.each do |sg| %>
-
+<% if !( sg.activated  ) %>
 <li>
   
  
@@ -35,6 +36,34 @@ size of study groups = <%= @studygroups.length %>
   
   
 </li>
+<%end%>
+
+<%end%>
+ROWS OF ACTIVATED STUDY GROUPS
+<% @studygroups.each do |sg| %>
+<% if ( sg.activated ) %>
+<li>
+  
+ 
+    <%= sg.classtime.strftime("%H:%M") %> 
+    <%= sg.day %> 
+
+     studygroup size
+    <span id=<%="ssg#{sg.id}"%>>
+     <%= sg.choosestudygroups.count %>
+    </span>
+
+
+
+    <%= render 'joinsg_form',sg: sg if signed_in? %>
+
+    
+
+  
+  
+</li>
+<%end%>
+
 <%end%>
 
 
