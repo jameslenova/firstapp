@@ -26,6 +26,7 @@ Firstapp::Application.routes.draw do
   resources :locations
   resources :subjects
   resources :studygroups
+  resources :messages
 
 
   resources :users  do

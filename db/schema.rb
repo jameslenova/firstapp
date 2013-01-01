@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230073245) do
+ActiveRecord::Schema.define(:version => 20130101183657) do
 
   create_table "chooselocations", :force => true do |t|
     t.integer  "user_id"
@@ -46,11 +46,31 @@ ActiveRecord::Schema.define(:version => 20121230073245) do
   add_index "choosesubjects", ["user_id", "subject_id"], :name => "index_choosesubjects_on_user_id_and_subject_id", :unique => true
   add_index "choosesubjects", ["user_id"], :name => "index_choosesubjects_on_user_id"
 
+  create_table "forums", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "messages", :force => true do |t|
+    t.string   "content",    :default => ""
+    t.integer  "ratingplus"
+    t.integer  "ratingdown"
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.integer  "topic_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "messages", ["topic_id", "created_at"], :name => "index_messages_on_topic_id_and_created_at"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -72,6 +92,15 @@ ActiveRecord::Schema.define(:version => 20121230073245) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
+  create_table "sections", :force => true do |t|
+    t.string   "title"
+    t.integer  "forum_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sections", ["forum_id"], :name => "index_sections_on_forum_id"
+
   create_table "studygroups", :force => true do |t|
     t.integer  "subject_id"
     t.integer  "location_id"
@@ -82,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20121230073245) do
     t.datetime "updated_at",                     :null => false
     t.integer  "min",         :default => 5
     t.integer  "max",         :default => 10
+    t.integer  "forum_id"
   end
 
   add_index "studygroups", ["location_id", "created_at"], :name => "index_studygroups_on_location_id_and_created_at"
@@ -92,6 +122,19 @@ ActiveRecord::Schema.define(:version => 20121230073245) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "topics", :force => true do |t|
+    t.string   "title",      :default => ""
+    t.integer  "section_id"
+    t.string   "content",    :default => ""
+    t.integer  "user_id"
+    t.integer  "ratingup",   :default => 0
+    t.integer  "ratingdown", :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "topics", ["section_id", "created_at"], :name => "index_topics_on_section_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"

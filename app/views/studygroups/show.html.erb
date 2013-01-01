@@ -1,0 +1,47 @@
+
+
+  
+ 
+    <%= @sg.classtime.strftime("%H:%M") %> 
+    <%= @sg.day %> 
+
+     studygroup size
+    <span id=<%="ssg#{@sg.id}"%>>
+     <%= @sg.choosestudygroups.count %>
+    </span>
+
+<ol>
+   <% @postings.each do | pp| %>
+    <li>
+    <%= pp.content %>
+    </li>
+
+
+
+
+    <%end%>
+</ol>
+
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div><%= f.hidden_field :topic_id %></div>
+  
+
+
+
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new post..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>
+
+
+
+
+
+    
+    
+
+  
+  

@@ -18,4 +18,26 @@ class StudygroupsController < ApplicationController
       format.js
     end
   end
+
+
+
+  def show
+
+    @sg = Studygroup.find(params[:id])
+
+    
+   if ( @sg.activated ) 
+
+    @postings=@sg.forum.sections.find_by_title("discussion").topics.find_by_title("discussion").messages
+    @post = @sg.forum.sections.find_by_title("discussion").topics.find_by_title("discussion").messages.build
+
+    end
+
+    respond_to do |format|
+      format.html 
+      format.js
+    end
+  end
 end
+
+

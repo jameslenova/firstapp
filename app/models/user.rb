@@ -73,6 +73,7 @@ class User < ActiveRecord::Base
     choosestudygroups.create!(studygroup_id: sg.id)
     if ( sg.choosestudygroups.count ) >= sg.min 
       sg.activated=true
+      sg.makeforum
       sg.save
     end
   end
