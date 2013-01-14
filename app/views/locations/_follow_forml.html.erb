@@ -1,0 +1,8 @@
+
+  <div id=<%="loc#{location.id}"%>>
+  <% if current_user.bypass?(location) %>
+    <%= render 'unfollowl',location: location %>
+  <% else %>
+    <%= render 'followl',location: location %>
+  <% end %>
+  </div>

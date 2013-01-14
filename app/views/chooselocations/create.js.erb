@@ -1,1 +1,3 @@
 $("#follow_form").html("<%= escape_javascript(render('locations/unfollow')) %>")
+
+$("#<%="loc#{@location.id}"%>").html("<%= escape_javascript(render('locations/unfollow')) %>")

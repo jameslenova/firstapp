@@ -1,6 +1,8 @@
 <li>
   
   <%= link_to subject.title, subject %>
+  <%= render 'follow_forml',subject: subject if signed_in? %>
+
   <% if current_user.admin? %>
     | <%= link_to "delete", subject, method: :delete,
                                   data: { confirm: "You sure?" } %>

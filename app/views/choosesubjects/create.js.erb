@@ -1,1 +1,3 @@
 $("#follow_form").html("<%= escape_javascript(render('subjects/unfollow')) %>")
+
+$("#<%="sub#{@subject.id}"%>").html("<%= escape_javascript(render('subjects/unfollow')) %>")

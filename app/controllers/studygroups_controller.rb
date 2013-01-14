@@ -4,8 +4,9 @@ class StudygroupsController < ApplicationController
   def create
     @sg = Studygroup.new(params[:studygroup])
     @sg.save
+    
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to "/onegroup/#{@sg.subject.id}/#{@sg.location.id}" }
       format.js
     end
   end

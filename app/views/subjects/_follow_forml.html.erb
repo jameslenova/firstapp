@@ -1,0 +1,8 @@
+
+  <div id=<%="sub#{subject.id}"%>>
+  <% if current_user.study?(subject) %>
+    <%= render 'unfollowl',subject: subject %>
+  <% else %>
+    <%= render 'followl', subject: subject %>
+  <% end %>
+  </div>

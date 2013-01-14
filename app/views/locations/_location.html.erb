@@ -1,6 +1,8 @@
 <li>
   
   <%= link_to location.title, location %>
+  <%= render 'follow_forml',location: location  if signed_in? %>
+
   <% if current_user.admin? %>
     | <%= link_to "delete", location, method: :delete,
                                   data: { confirm: "You sure?" } %>
