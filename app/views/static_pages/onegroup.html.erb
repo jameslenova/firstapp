@@ -52,7 +52,28 @@ ROWS OF ACTIVATED STUDY GROUPS
     <span id=<%="ssg#{sg.id}"%>>
      <%= sg.choosestudygroups.count %>
     </span>
+    <% tp=sg.forum.sections.find_by_title("discussion",:first).topics.find_by_title("discussion",:first)%>
+    <% tp.messages.each do |mm| %>
 
+    <%= mm.content %>
+
+    <%end%>
+
+    <%= form_for(tp.messages.build(user_id: current_user.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :user_id %></div>
+  <div><%= f.hidden_field :topic_id %></div>
+
+  <div  class="field"><%= f.text_area :content %></div>
+
+
+  <%= f.submit "post message", class: "btn btn-large btn-primary" %>
+<% end %>
+
+
+
+
+   
 
 
 
