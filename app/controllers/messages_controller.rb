@@ -5,12 +5,17 @@ class MessagesController < ApplicationController
   def create
     @post = Message.new(params[:message])
     @post.user_id=current_user.id
+    @tp=@post.topic
     if @post.save
       flash[:success] = "post created!"
-      redirect_to Studygroup.find_by_forum_id(@post.topic.section.forum.id)
-    else
-      redirect_to Studygroup.find_by_forum_id(@post.topic.section.forum.id)
+      #redirect_to Studygroup.find_by_forum_id(@post.topic.section.forum.id)
+    
       
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
     end
   end
 

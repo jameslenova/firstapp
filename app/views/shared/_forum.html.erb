@@ -1,0 +1,8 @@
+<% tp=sg.forum.sections.find_by_title("discussion",:first).topics.find_by_title("discussion",:first)%>
+    <% tp.messages.each do |mm| %>
+<li>
+    <%= mm.user.name %> 
+    <%= mm.content %>
+  </li>
+
+    <%end%>

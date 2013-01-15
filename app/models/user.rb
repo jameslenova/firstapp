@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
+  has_many :messages, dependent: :destroy
 
   def feed
     # This is preliminary. See "Following users" for the full implementation.
@@ -71,7 +72,7 @@ class User < ActiveRecord::Base
 
   def join!(sg)
     choosestudygroups.create!(studygroup_id: sg.id)
-    if ( sg.choosestudygroups.count ) >= sg.min 
+    if ( sg.choosestudygroups.count ) >= sg.min and !sg.activated
       sg.activated=true
       sg.makeforum
       sg.save
