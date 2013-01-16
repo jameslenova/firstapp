@@ -262,3 +262,13 @@ select {
    background: url(new_arrow.png) no-repeat right #ddd;
 }
 
+textarea#message_area {
+  width: 100px;
+  height: 100px;
+}
+
+h1#activatedgroup {
+  color: $blue;
+  
+}
+

@@ -1,2 +1,2 @@
-$("#topic").html("<%= escape_javascript(render('shared/topic',tp: @tp)) %>")
+$("#<%="topic#{@tp.id}"%>").html("<%= escape_javascript(render('shared/topic',tp: @tp)) %>")
 $("#topick").html('<%= @tp.title %>')
