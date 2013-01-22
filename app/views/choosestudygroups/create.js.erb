@@ -1,2 +1,16 @@
+
+<% if (@beforejoin && @afterjoin ) then %>
+
+$("#emptysg").replaceWith("<%= escape_javascript(render('static_pages/sg',sg: @sg)) %>")
+$("#wsg<%=@sg.id%>").html("")
+
+
+<% else %>
+
+
+
 $("#sg<%=@sg.id%>").html("<%= escape_javascript(render('static_pages/unjoinsg',sg: @sg)) %>")
 $("#ssg<%=@sg.id%>").html('<%= @sg.choosestudygroups.count %>')
+
+<% end %>
+

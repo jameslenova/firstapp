@@ -3,7 +3,15 @@ class ChoosestudygroupsController < ApplicationController
 
   def create
     @sg = Studygroup.find(params[:choosestudygroup][:studygroup_id])
+    
+    @beforejoin=!@sg.activated
+
+
     current_user.join!(@sg)
+
+    @afterjoin=@sg.activated
+
+
     
     respond_to do |format|
       format.html { redirect_to @sg }

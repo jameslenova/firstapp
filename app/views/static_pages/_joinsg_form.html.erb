@@ -1,8 +1,8 @@
 
   <span id=<%="sg#{sg.id}"%>>
   <% if current_user.join?(sg) %>
-    <%= render 'unjoinsg',sg: sg %>
+    <%= render 'static_pages/unjoinsg',sg: sg %>
   <% else %>
-    <%= render 'joinsg',sg: sg %>
+    <%= render 'static_pages/joinsg',sg: sg %>
   <% end %>
   </span>

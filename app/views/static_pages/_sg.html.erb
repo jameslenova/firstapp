@@ -1,0 +1,71 @@
+
+    <li>
+  <aside class="">
+
+  
+ 
+    <%= sg.classtime.strftime("%H:%M") %> 
+    <%= sg.day %> 
+
+     studygroup size
+    <span id=<%="ssg#{sg.id}"%>>
+     <%= sg.choosestudygroups.count %>
+    </span>
+
+    
+      <% tp=sg.forum.sections.find_by_title("discussion",:first).topics.find_by_title("discussion",:first)%>
+
+
+<div id=<%="topic#{tp.id}"%>>
+    <%= render 'shared/topic',:tp=>tp %>
+  </div>
+
+
+    
+
+    <%= form_for(tp.messages.build(user_id: current_user.id),
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :user_id %></div>
+  <div><%= f.hidden_field :topic_id %></div>
+
+  <div  class="field"><%= f.text_area :content,:id => "message_area" %></div>
+
+
+  <%= f.submit "post message", class: "btn btn-large btn-primary" %>
+
+  
+
+
+
+    <% end %>
+
+
+<%= render 'static_pages/joinsg_form',sg: sg if signed_in? %>
+    <%= link_to "show study group", sg %>
+
+
+</aside>
+</li>
+<p>
+	<p>
+		------------------
+
+
+
+
+   
+
+
+
+
+    
+    
+
+  
+  
+
+
+
+<div id="emptysg">
+
+</div>

@@ -17,7 +17,7 @@ ROWS OF UNACTIVATED STUDY GROUPS
 <% @studygroups.each do |sg| %>
 <% if !( sg.activated  ) %>
 <li>
-  
+  <div id = "wsg<%=sg.id%>">
  
     <%= sg.classtime.strftime("%H:%M") %> 
     <%= sg.day %> 
@@ -30,6 +30,9 @@ ROWS OF UNACTIVATED STUDY GROUPS
 
 
     <%= render 'joinsg_form',sg: sg if signed_in? %>
+
+    </div>
+
 
     
 
@@ -84,7 +87,7 @@ ROWS OF ACTIVATED STUDY GROUPS
 
 
 
-<% end %>
+    <% end %>
 
 
 <%= render 'joinsg_form',sg: sg if signed_in? %>
@@ -113,6 +116,12 @@ ROWS OF ACTIVATED STUDY GROUPS
 <%end%>
 
 <%end%>
+
+<div id="emptysg">
+
+</div>
+
+
 
 
 <%= form_for(@subject.studygroups.build(location_id: @location.id,min: 2),
